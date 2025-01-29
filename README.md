@@ -1,2 +1,2 @@
 # HRDC-IMS
-Project for CSCI 423- an inventory management system (IMS) for the HRDC.
+Project for ESOF 423- an inventory management system (IMS) for the HRDC.
