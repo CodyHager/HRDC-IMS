@@ -1,6 +1,8 @@
-from openpyxl.xml.constants import CHART_TYPE
+
 from peewee import *
 import datetime
+
+
 
 db = SqliteDatabase('inventory.db')
 
@@ -19,7 +21,8 @@ class Product(Model):
 
 
 db.connect()
-db.create_tables([Product])
+if not db.table_exists('product'):
+    db.create_tables([Product])
 
 
 
@@ -35,10 +38,22 @@ def add_product(name, stock, price,unit_type, ideal_stock, image_path=None):
             'image_path': image_path
         }
     )
-
     return product
 
+#TODO
+def delete_product():
+    pass
 
+
+#TODO
+def get_product(name):
+    pass
+
+#TODO
+def update_stock(name, new_stock):
+    pass
+
+#TODO other update methods
 
 
 if __name__ == "__main__":
