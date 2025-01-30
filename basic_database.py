@@ -1,4 +1,3 @@
-
 from peewee import *
 import datetime
 
@@ -41,22 +40,30 @@ def add_product(name, stock, price,unit_type, ideal_stock, image_path=None):
     return product
 
 #TODO
-def delete_product():
-    pass
+def delete_product(name):
+    product = get_product(name)
+    product.delete_instance()
 
 
 #TODO
 def get_product(name):
-    pass
+    product = Product.get(Product.product_name == name)
+    return product
 
 #TODO
 def update_stock(name, new_stock):
-    pass
+    product = get_product(name)
+    product.inventory += new_stock
+    product.save()
+
 
 #TODO other update methods
 
 
 if __name__ == "__main__":
     add_product("Toilet Paper", 5, 20.00, "rolls", 100, "images/tp.jpg")
+    update_stock("Toilet Paper", 5)
+    # Uncomment to test delete_product
+    """delete_product("Toilet Paper")"""
 
 db.close()
