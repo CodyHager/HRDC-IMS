@@ -1,3 +1,4 @@
+from lab.tools import product
 from peewee import *
 import datetime
 
@@ -24,8 +25,6 @@ if not db.table_exists('product'):
     db.create_tables([Product])
 
 
-
-
 def add_product(name, stock, price,unit_type, ideal_stock, image_path=None):
     product, created = Product.get_or_create(
         product_name=name,
@@ -39,18 +38,18 @@ def add_product(name, stock, price,unit_type, ideal_stock, image_path=None):
     )
     return product
 
-#TODO
+# Deletes the chosen product
 def delete_product(name):
     product = get_product(name)
     product.delete_instance()
 
 
-#TODO
+# Returns the information of the chosen product
 def get_product(name):
     product = Product.get(Product.product_name == name)
     return product
 
-#TODO
+# Updates the current available stock of a product
 def update_stock(name, new_stock):
     product = get_product(name)
     product.inventory += new_stock
@@ -58,6 +57,18 @@ def update_stock(name, new_stock):
 
 
 #TODO other update methods
+
+# Updates price
+def update_price(name, increase):
+    product = get_product(name)
+    product.price += increase
+    product.save()
+
+# Update ideal stock
+def update_ideal_stock(name, increase):
+    product = get_product(name)
+    product.ideal_stock += increase
+    product.save()
 
 
 if __name__ == "__main__":
