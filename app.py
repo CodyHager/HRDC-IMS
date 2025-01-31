@@ -27,4 +27,5 @@ def home():
     return render_template("index.html", test_list = test_list)
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    #TODO: disable debug mode when we are done developing
+    app.run(port=5000, debug=True)
