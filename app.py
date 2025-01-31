@@ -20,3 +20,11 @@ def _db_connect():
 def _db_close(exc):
     if not db.is_closed():
         db.close()
+
+@app.get("/")
+def home():
+    test_list = ['a','b','c']
+    return render_template("index.html", test_list = test_list)
+
+if __name__ == '__main__':
+    app.run(port=5000)

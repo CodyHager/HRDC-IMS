@@ -1,4 +1,3 @@
-from lab.tools import product
 from peewee import *
 import datetime
 
